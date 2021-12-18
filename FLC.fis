@@ -1,0 +1,106 @@
+[System]
+Name='FLC'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=2
+NumRules=43
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Temperature'
+Range=[0 50]
+NumMFs=6
+MF1='very_cold':'trapmf',[-18.6 -1 5 12]
+MF2='cool':'trapmf',[10 12 15 18]
+MF3='Moderate':'trimf',[16 20 23]
+MF4='warm':'trimf',[22 25 28]
+MF5='hot':'trapmf',[27 30 33 36]
+MF6='very_hot':'trapmf',[33 40 52.5 72.5]
+
+[Input2]
+Name='Fan_Motor_Speed'
+Range=[0 100]
+NumMFs=5
+MF1='very_slow':'trapmf',[-100 1 10 24]
+MF2='slow':'trimf',[20 30 40]
+MF3='medium':'trimf',[30 50 70]
+MF4='fast':'trimf',[60 70 80]
+MF5='very_fast':'trapmf',[76 85 200 800]
+
+[Input3]
+Name='Humidity'
+Range=[0 100]
+NumMFs=3
+MF1='low':'trimf',[-41.7 0 30]
+MF2='medium':'trimf',[20 50 80]
+MF3='high':'trimf',[70 100 141.7]
+
+[Output1]
+Name='Water_Flow_Rate'
+Range=[1 2]
+NumMFs=7
+MF1='slow_negative':'trapmf',[0.625 1 1.05 1.12]
+MF2='medium':'trimf',[1.3 1.35 1.42]
+MF3='postive':'trimf',[1.5 1.55 1.62]
+MF4='low_negative':'trimf',[1.2 1.25 1.32]
+MF5='negative':'trimf',[1.1 1.15 1.22]
+MF6='low_positive':'trimf',[1.4 1.45 1.52]
+MF7='high_postive':'trapmf',[1.6 1.7 2 5]
+
+[Output2]
+Name='Window_postion'
+Range=[0 100]
+NumMFs=3
+MF1='close':'trimf',[-41.67 0 40]
+MF2='half-open':'trapmf',[15 40 55 85]
+MF3='open':'trimf',[60 100 141.7]
+
+[Rules]
+5 1 0, 7 0 (1) : 1
+5 2 0, 7 0 (1) : 1
+5 3 0, 3 0 (1) : 1
+5 4 0, 6 0 (1) : 1
+5 5 0, 6 0 (1) : 1
+6 1 0, 7 0 (1) : 1
+6 2 0, 7 0 (1) : 1
+6 3 0, 3 0 (1) : 1
+6 4 0, 3 0 (1) : 1
+6 5 0, 6 0 (1) : 1
+4 1 0, 2 0 (1) : 1
+4 2 0, 2 0 (1) : 1
+4 3 0, 2 0 (1) : 1
+4 4 0, 4 0 (1) : 1
+4 5 0, 4 0 (1) : 1
+2 1 0, 4 0 (1) : 1
+2 2 0, 4 0 (1) : 1
+2 3 0, 4 0 (1) : 1
+2 4 0, 5 0 (1) : 1
+2 5 0, 5 0 (1) : 1
+1 1 0, 4 0 (1) : 1
+1 2 0, 4 0 (1) : 1
+1 3 0, 1 0 (1) : 1
+1 4 0, 1 0 (1) : 1
+1 5 0, 1 0 (1) : 1
+1 0 3, 0 1 (1) : 1
+1 0 2, 0 1 (1) : 1
+1 0 3, 0 1 (1) : 1
+2 0 1, 0 2 (1) : 1
+2 0 2, 0 1 (1) : 1
+2 0 3, 0 1 (1) : 1
+3 0 1, 0 2 (1) : 1
+3 0 2, 0 2 (1) : 1
+3 0 3, 0 2 (1) : 1
+4 0 1, 0 2 (1) : 1
+4 0 2, 0 2 (1) : 1
+4 0 3, 0 2 (1) : 1
+5 0 1, 0 2 (1) : 1
+5 0 2, 0 3 (1) : 1
+5 0 3, 0 3 (1) : 1
+6 0 1, 0 3 (1) : 1
+6 0 2, 0 3 (1) : 1
+6 0 3, 0 3 (1) : 1
